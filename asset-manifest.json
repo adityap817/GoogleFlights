@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/GoogleFlights/static/js/main.65f9c9ef.js",
+    "static/media/logo.png": "/GoogleFlights/static/media/logo.06b946022f8493ea8d86.png",
+    "index.html": "/GoogleFlights/index.html",
+    "main.65f9c9ef.js.map": "/GoogleFlights/static/js/main.65f9c9ef.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.65f9c9ef.js"
+  ]
+}
