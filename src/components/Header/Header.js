@@ -20,8 +20,7 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import HouseIcon from '@mui/icons-material/House';
 import AppsIcon from '@mui/icons-material/Apps';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const pages = ['Travel', 'Explore', 'Flights', 'Hotels', 'Vacation rentals'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -29,6 +28,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -53,34 +53,30 @@ function ResponsiveAppBar() {
     <AppBar position="sticky" sx={{ bgcolor: 'white', boxShadow: 'none', size: 'small', borderBottom: '1px solid lightgray' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <IconButton
             size="large"
             edge="start"
             color="lightgray"
             aria-label="menu"
             sx={{ ml: 0.8, mr: 2, padding: '0' }}
-
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+
+          <Box
+            component="img"
+            src={logo}
+            alt="Logo"
+            onClick={handleLogoClick}
             sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              height: 25,
+              width: 'auto',
+              marginTop: 0.8,
+              marginRight: 3,
+              display: { xs: 'flex', md: 'none' },
+              cursor: 'pointer',
             }}
-          >
-            Google Flights
-          </Typography> */}
+          />
 
           <Box
             component="img"
@@ -96,7 +92,6 @@ function ResponsiveAppBar() {
               cursor: 'pointer',
             }}
           />
-
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -151,8 +146,6 @@ function ResponsiveAppBar() {
           >
             Google Flights
           </Typography>
-
-          {/* Menu */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (

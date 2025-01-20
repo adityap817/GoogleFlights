@@ -1,4 +1,4 @@
-import { Container, Typography, Button, InputLabel } from '@mui/material'
+import { Container, Typography, Button, InputLabel, useMediaQuery } from '@mui/material'
 import React from 'react'
 import { useRef, useEffect } from 'react';
 import Box from '@mui/material/Box';
@@ -9,7 +9,6 @@ import { InputAdornment } from '@mui/material';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { IconButton } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -18,18 +17,14 @@ import { MyLocation } from '@mui/icons-material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
-// ---------------------------------------------------------------------------------
-
 function Body() {
-
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const [trip, setTrip] = React.useState("One way");
     const [people, setPeople] = React.useState(1);
     const [type, setType] = React.useState("Economy");
-
 
     const handleChangeTrip = (event) => setTrip(event.target.value);
     const handleChangePeople = (event) => setPeople(event.target.value);
@@ -55,29 +50,27 @@ function Body() {
         }
     }, []);
 
-
     return (
         <Container>
             <Box
                 sx={{
                     position: 'relative',
                     width: '100%',
-                    height: 300,
+                    height: isMobile ? 200 : 300,
                     backgroundImage: 'url(/googleflights.jpg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    // boxShadow: 2, 
                 }}
             />
 
             <Typography variant="h3" color="initial" align='center' marginTop={0}
                 sx={{
                     position: 'absolute',
-                    top: 300,
+                    top: isMobile ? 200 : 300,
                     bottom: 20,
                     left: 20,
                     right: 20,
-                    fontSize: 55
+                    fontSize: isMobile ? 30 : 55
                 }}>
                 Flights
             </Typography>
@@ -86,45 +79,32 @@ function Body() {
                 sx={{
                     position: 'relative',
                     width: '85%',
-                    height: 160,
+                    height: isMobile ? 'auto' : 160,
                     marginLeft: 10,
                     marginRight: 10,
                     marginTop: 5,
-                    border: ' 2px black',
-                    // backgroundColor:'red',
+                    border: '2px black',
                     boxShadow: 8,
                     borderRadius: '8px',
                     display: 'flex',
                     flexWrap: 'wrap',
-                    flexDirection: 'row',
+                    flexDirection: isMobile ? 'column' : 'row',
                     justifyContent: 'center',
                     alignItems: 'center'
-
                 }}
-
             >
-
                 <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     flexWrap: 'wrap',
                     ml: 2,
-
-
-                    // padding:2,
-                    // backgroundColor:'red',
-                    // marginTop:10
                 }}>
-
                     {/* TRIP */}
-
                     <FormControl sx={{
                         minWidth: 120,
                         position: 'absolute',
                         top: 5,
                         left: 20,
-
-
                         '& .MuiInputBase-root': {
                             fontSize: '0.875rem',
                             padding: '2px 4px',
@@ -138,7 +118,6 @@ function Body() {
                     }}>
                         <InputLabel id="trip-label"></InputLabel>
                         <Select
-
                             labelId="trip-label"
                             value={trip}
                             onChange={handleChangeTrip}
@@ -147,23 +126,17 @@ function Body() {
                                 height: 40,
                                 '& .MuiOutlinedInput-notchedOutline': {
                                     border: 'none',
-
                                 },
                                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                                     border: 'none',
-
                                 },
-
                             }}
                             input={<OutlinedInput
-
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <ArrowRightAltIcon />
                                     </InputAdornment>
                                 }
-
-
                             />}
                         >
                             <MenuItem value={'Round trip'}> Round trip</MenuItem>
@@ -173,14 +146,12 @@ function Body() {
                     </FormControl>
 
                     {/* PEOPLE */}
-
                     <FormControl sx={{
                         minWidth: 75,
                         position: 'absolute',
                         top: 5,
                         left: 165,
                         gap: 2,
-
                         '& .MuiInputBase-root': {
                             fontSize: '0.875rem',
                             padding: '2px 0px',
@@ -203,15 +174,12 @@ function Body() {
                                 height: 40,
                                 '& .MuiOutlinedInput-notchedOutline': {
                                     border: 'none'
-
                                 },
                                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                                     border: 'none'
-
                                 },
                             }}
                             input={<OutlinedInput
-
                                 startAdornment={
                                     <InputAdornment position="start" >
                                         <PersonOutlineIcon />
@@ -228,7 +196,6 @@ function Body() {
                     </FormControl>
 
                     {/* TYPE */}
-
                     <FormControl sx={{
                         minWidth: 100,
                         position: 'absolute',
@@ -253,21 +220,16 @@ function Body() {
                             label="Type"
                             sx={{
                                 height: 40,
-
                                 '& .MuiOutlinedInput-notchedOutline': {
                                     border: 'none'
-
                                 },
                                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                                     border: 'none'
-
                                 },
                             }}
                             input={<OutlinedInput
-
                                 startAdornment={
                                     <InputAdornment position="start">
-
                                     </InputAdornment>
                                 }
                             />}
@@ -278,141 +240,123 @@ function Body() {
                             <MenuItem value={'First'}>First</MenuItem>
                         </Select>
                     </FormControl>
-
                 </Box>
 
-
-
-
-                <TextField
-                    id="outlined-basic"
-                    placeholder='Where from?'
-                    variant="outlined"
-                    inputRef={fromRef}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <MyLocation />
-                            </InputAdornment>
-                        )
-                    }}
-
-                    sx={{
-                        // my: 2,
-                        mx: 1,
-                        ml: -3,
-                        left: 0,
-                        minWidth: 280,
-                        "& .MuiOutlinedInput-root": {
-                            position: "relative",
-                            overflow: "hidden",
-                            borderRadius: "4px",
-                            "&:after": {
-                                content: '""',
-                                position: "absolute",
-                                top: "50%",
-                                right: "-20px",
-                                transform: "translateY(-50%)",
-                                width: "30px",
-                                height: "30px",
-                                backgroundColor: "white",
-                                border: "1.5px solid lightgray",
-                                borderRadius: "50%", // 
-                                zIndex: 1,
-                            },
-                        },
-
-
-                    }}
-                />
-
-                <IconButton
-                    size="xl"
-                    edge="start"
-                    color="lightgray"
-                    aria-label="menu"
-                    sx={{
-                        ml: -2,
-                        padding: '0',
-                        zIndex: 4,
-                        size: 'large',
-                    }}
-                >
-                    <SwapHorizIcon />
-                </IconButton>
-
-                <TextField
-                    id="outlined-basic"
-                    placeholder="Where to?"
-                    variant="outlined"
-                    inputRef={toRef}
-
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <PlaceIcon />
-                            </InputAdornment>
-                        )
-                    }}
-
-
-                    sx={{
-                        // my:2,
-                        // mr:13,
-                        mx: 1,
-                        ml: -1,
-                        minWidth: 280,
-
-                        "& .MuiOutlinedInput-root": {
-                            position: "relative",
-                            overflow: "hidden",
-                            borderRadius: "4px",
-                            "&:before": {
-                                content: '""',
-                                position: "absolute",
-                                top: "50%",
-                                left: "-20px",
-                                transform: "translateY(-50%)",
-                                width: "30px",
-                                height: "30px",
-                                backgroundColor: "white",
-                                border: "1.5px solid lightgray",
-                                borderRadius: "50%",
-                                zIndex: 1,
-                            },
-                        },
-
-
-                    }}
-                />
-
-                {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> */}
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                        label="Departure"
-
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    ml: 2,
+                    mt: isMobile ? 8 : 0,
+                }}>
+                    <TextField
+                        id="outlined-basic"
+                        placeholder='Where from?'
+                        variant="outlined"
+                        inputRef={fromRef}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <MyLocation />
+                                </InputAdornment>
+                            )
+                        }}
                         sx={{
-                            // ml: 0.5,
-                            // mr,
-                            minWidth: 365,
-
+                            mx: 1,
+                            ml: isMobile ? 0 : -3,
+                            left: 0,
+                            minWidth: isMobile ? '100%' : 280,
+                            "& .MuiOutlinedInput-root": {
+                                position: "relative",
+                                overflow: "hidden",
+                                borderRadius: "4px",
+                                "&:after": {
+                                    content: '""',
+                                    position: "absolute",
+                                    top: "50%",
+                                    right: "-20px",
+                                    transform: "translateY(-50%)",
+                                    width: "30px",
+                                    height: "30px",
+                                    backgroundColor: "white",
+                                    border: "1.5px solid lightgray",
+                                    borderRadius: "50%",
+                                    zIndex: 1,
+                                },
+                            },
                         }}
                     />
 
+                    <IconButton
+                        size="xl"
+                        edge="start"
+                        color="lightgray"
+                        aria-label="menu"
+                        sx={{
+                            ml: isMobile ? 0 : -2,
+                            padding: '0',
+                            zIndex: 4,
+                            size: 'large',
+                        }}
+                    >
+                        <SwapHorizIcon />
+                    </IconButton>
 
-                    {/* <DateRangePicker sx={{
+                    <TextField
+                        id="outlined-basic"
+                        placeholder="Where to?"
+                        variant="outlined"
+                        inputRef={toRef}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <PlaceIcon />
+                                </InputAdornment>
+                            )
+                        }}
+                        sx={{
+                            mx: 1,
+                            ml: isMobile ? 0 : -1,
+                            minWidth: isMobile ? '100%' : 280,
+                            "& .MuiOutlinedInput-root": {
+                                position: "relative",
+                                overflow: "hidden",
+                                borderRadius: "4px",
+                                "&:before": {
+                                    content: '""',
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "-20px",
+                                    transform: "translateY(-50%)",
+                                    width: "30px",
+                                    height: "30px",
+                                    backgroundColor: "white",
+                                    border: "1.5px solid lightgray",
+                                    borderRadius: "50%",
+                                    zIndex: 1,
+                                },
+                            },
+                        }}
+                    />
+                </Box>
 
-                        ml: -10,
-                        minWidth: 280,
-                        
-
-                    }} localeText={{ start: 'Departure', end: 'Return' }} 
-                    /> */}
-
-                </LocalizationProvider>
-
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    ml: 2,
+                    mt: isMobile ? 8 : 0,
+                }}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Departure"
+                            sx={{
+                                minWidth: isMobile ? '100%' : 365,
+                            }}
+                        />
+                    </LocalizationProvider>
+                </Box>
             </Box>
-
 
             <Button variant="contained" color="inherit"
                 startIcon={<SearchIcon />}
@@ -420,8 +364,6 @@ function Body() {
                     my: 2,
                     mx: 2,
                     color: 'white',
-                    //   color: '#4285F4' , 
-                    //   backgroundColor:  '#e8f0fe', 
                     backgroundColor: '#4285F4',
                     borderColor: 'lightgray',
                     display: 'flex',
@@ -430,13 +372,11 @@ function Body() {
                     right: 20,
                     left: 0,
                     justifySelf: 'center',
-                    top: -30
+                    top: isMobile ? 0 : -30
                 }}>
                 Explore
             </Button>
-
         </Container>
-
     )
 }
 
