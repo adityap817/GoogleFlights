@@ -62,7 +62,7 @@ function Body() {
                     position: 'relative',
                     width: '100%',
                     height: 300,
-                    backgroundImage: 'url(/googleflights.jpg)',
+                    backgroundImage: 'url(${process.env.PUBLIC_URL}/googleflights.jpg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     // boxShadow: 2, 
