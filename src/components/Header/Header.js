@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import logo from '/Users/adityapatil/Documents/Coding Stuff/googleflights/src/assests/logo.png'
+import logo from '../../assests/logo.png'
 import LuggageIcon from '@mui/icons-material/Luggage';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';

@@ -20,6 +20,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+
 // ---------------------------------------------------------------------------------
 
 function Body() {
@@ -62,7 +63,7 @@ function Body() {
                     position: 'relative',
                     width: '100%',
                     height: 300,
-                    backgroundImage: 'url(${process.env.PUBLIC_URL}/googleflights.jpg)',
+                    backgroundImage: 'url(/googleflights.jpg)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     // boxShadow: 2, 
